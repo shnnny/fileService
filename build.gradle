@@ -1,4 +1,4 @@
-group 'fileServer'
+group 'notBlog'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
@@ -12,7 +12,7 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
-    compile 'org.springframework.boot:spring-boot-starter'
+    compile 'org.springframework.boot:spring-boot-starter:2.0.4.RELEASE'
     compile 'org.springframework.boot:spring-boot-starter-aop:2.0.4.RELEASE'
     compile 'org.springframework.boot:spring-boot-starter-web:2.0.4.RELEASE'
     runtime 'org.springframework.boot:spring-boot-starter-tomcat:2.0.4.RELEASE'

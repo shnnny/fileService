@@ -1,5 +1,3 @@
-import com.shnnny.fileServer.bean.FileDesc;
-
 /**
  * Created by zzh on 2018/9/21.
  */

@@ -1,4 +1,4 @@
-package com.shnnny.fileServer.exception;
+package com.shnnny.notBlog.exception;
 
 /**
  * Created by zzh on 2018/9/21.

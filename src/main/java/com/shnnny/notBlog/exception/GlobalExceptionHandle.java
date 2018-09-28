@@ -1,6 +1,6 @@
-package com.shnnny.fileServer.exception;
+package com.shnnny.notBlog.exception;
 
-import com.shnnny.fileServer.utils.ResultUtils;
+import com.shnnny.notBlog.utils.ResultUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DuplicateKeyException;

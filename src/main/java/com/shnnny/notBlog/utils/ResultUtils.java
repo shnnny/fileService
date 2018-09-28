@@ -1,6 +1,6 @@
-package com.shnnny.fileServer.utils;
+package com.shnnny.notBlog.utils;
 
-import com.shnnny.fileServer.exception.Result;
+import com.shnnny.notBlog.exception.Result;
 
 /**
  * Created by zzh on 2018/9/21.

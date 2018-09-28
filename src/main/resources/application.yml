@@ -5,9 +5,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://111.231.194.147:3306/fileServer?characterEncoding=UTF-8
-    username: fileServer
-    password: fileServer
+    url: jdbc:mysql://111.231.194.147:3306/notBlog?characterEncoding=UTF-8
+    username: notBlog
+    password: notBlog
     driver-class-name: com.mysql.jdbc.Driver
   jpa:
     database: MYSQL
