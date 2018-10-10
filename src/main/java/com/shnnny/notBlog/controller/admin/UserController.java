@@ -1,7 +1,7 @@
 package com.shnnny.notBlog.controller.admin;
 
-import com.shnnny.notBlog.bean.Result;
-import com.shnnny.notBlog.bean.User;
+import com.shnnny.notBlog.model.dto.Result;
+import com.shnnny.notBlog.model.po.User;
 import com.shnnny.notBlog.controller.BaseController;
 import com.shnnny.notBlog.utils.ResultUtils;
 import org.springframework.web.bind.annotation.*;

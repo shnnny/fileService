@@ -1,4 +1,4 @@
-package com.shnnny.notBlog.bean;
+package com.shnnny.notBlog.model.po;
 
 import java.io.Serializable;
 

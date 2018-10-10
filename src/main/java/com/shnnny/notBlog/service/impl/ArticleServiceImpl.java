@@ -1,6 +1,6 @@
 package com.shnnny.notBlog.service.impl;
 
-import com.shnnny.notBlog.bean.Article;
+import com.shnnny.notBlog.model.po.Article;
 import com.shnnny.notBlog.repository.ArticleContentRepository;
 import com.shnnny.notBlog.repository.ArticleRepository;
 import com.shnnny.notBlog.service.ArticleService;

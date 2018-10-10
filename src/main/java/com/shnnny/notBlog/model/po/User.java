@@ -1,4 +1,4 @@
-package com.shnnny.notBlog.bean;
+package com.shnnny.notBlog.model.po;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -17,6 +17,11 @@ public class User implements Serializable {
      * 用户名称
      */
     private String username;
+
+    /**
+     * 昵称-艺名
+     */
+    private String nickname;
 
     /**
      * 用户密码
@@ -81,6 +86,15 @@ public class User implements Serializable {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    @Column(length = 40)
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     @Column(length = 40)

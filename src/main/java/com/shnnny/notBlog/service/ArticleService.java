@@ -1,6 +1,6 @@
 package com.shnnny.notBlog.service;
 
-import com.shnnny.notBlog.bean.Article;
+import com.shnnny.notBlog.model.po.Article;
 import org.springframework.data.domain.Page;
 
 public interface ArticleService {

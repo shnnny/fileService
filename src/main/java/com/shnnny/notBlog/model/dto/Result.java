@@ -1,4 +1,4 @@
-package com.shnnny.notBlog.bean;
+package com.shnnny.notBlog.model.dto;
 
 /**
  * Created by zzh on 2018/9/21.
