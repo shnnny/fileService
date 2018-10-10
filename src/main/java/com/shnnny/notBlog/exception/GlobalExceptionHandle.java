@@ -1,5 +1,6 @@
 package com.shnnny.notBlog.exception;
 
+import com.shnnny.notBlog.bean.Result;
 import com.shnnny.notBlog.utils.ResultUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

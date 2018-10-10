@@ -1,6 +1,6 @@
 package com.shnnny.notBlog.utils;
 
-import com.shnnny.notBlog.exception.Result;
+import com.shnnny.notBlog.bean.Result;
 
 /**
  * Created by zzh on 2018/9/21.

@@ -13,4 +13,6 @@ public class NotBlogApplication extends SpringBootServletInitializer {
     public static void main(String[] args) {
         SpringApplication.run(NotBlogApplication.class, args);
     }
+
+
 }
