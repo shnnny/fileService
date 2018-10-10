@@ -10,10 +10,10 @@ import com.shnnny.notBlog.service.ArticleService;
 import com.shnnny.notBlog.utils.ResultUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -45,6 +45,7 @@ public class ArticleController extends AbstractWebController {
         HttpSession session = getSession();
         article.setArticleContent(articleContent);
 
+
         articleService.publish(article);
 
 
@@ -52,4 +53,15 @@ public class ArticleController extends AbstractWebController {
         return ResultUtils.success();
     }
 
+    @GetMapping("{id}")
+    public Result getArticle(@PathVariable("id")String id){
+        HttpServletRequest request = getRequest();
+        HttpSession session = getSession();
+        Model model = getModel();
+        ServletContext context = getContext();
+        String remoteIp = getRemoteIp();
+        String token = getToken();
+
+        return ResultUtils.success();
+    }
 }

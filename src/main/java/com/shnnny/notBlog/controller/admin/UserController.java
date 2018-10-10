@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.*;
 public class UserController extends BaseController {
 
     @RequestMapping(value = "/hello",method = RequestMethod.GET)
-    public String hello() {
+    public Result hello() {
         long l = System.currentTimeMillis();
-        return "hello spring security";
+        return ResultUtils.success("hello spring security");
     }
 
    @GetMapping("/{id}")

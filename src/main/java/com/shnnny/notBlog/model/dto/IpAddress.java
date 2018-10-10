@@ -1,4 +1,4 @@
-package com.shnnny.notBlog.model.po;
+package com.shnnny.notBlog.model.dto;
 
 import java.io.Serializable;
 

@@ -42,25 +42,29 @@ public class Article implements Serializable {
     private Integer authorId;
 
     /**
-     * 内容类别
+     * 文章类型-原创转载翻译
      */
     private String type;
 
     /**
-     * 内容状态
+     * 文章状态 -- 草稿 -- 发布 -- 回收 -- 删除
      */
     private String status;
 
     /**
-     * 标签列表
+     * 标签列表 自定义五个
      */
     private String tags;
 
     /**
-     * 分类列表
+     * 分类列表  个人分类
      */
-    private String categories;
+    private String personCategories;
 
+    /**
+     * 博客分类
+     */
+    private String blogCagegory;
     /**
      * 点击次数
      */
@@ -95,10 +99,6 @@ public class Article implements Serializable {
      * 内容对象，这里分开进行存储
      */
     private ArticleContent articleContent;
-    /**
-     * 是否删除
-     */
-    private Integer isDelete;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -183,12 +183,21 @@ public class Article implements Serializable {
     }
 
     @Column(length = 40)
-    public String getCategories() {
-        return categories;
+    public String getPersonCategories() {
+        return personCategories;
     }
 
-    public void setCategories(String categories) {
-        this.categories = categories;
+    public void setPersonCategories(String personCategories) {
+        this.personCategories = personCategories;
+    }
+
+    @Column(length = 40)
+    public String getBlogCagegory() {
+        return blogCagegory;
+    }
+
+    public void setBlogCagegory(String blogCagegory) {
+        this.blogCagegory = blogCagegory;
     }
 
     @Column(length = 40)
@@ -254,12 +263,4 @@ public class Article implements Serializable {
         this.articleContent = articleContent;
     }
 
-    @Column(length = 40)
-    public Integer getIsDelete() {
-        return isDelete;
-    }
-
-    public void setIsDelete(Integer isDelete) {
-        this.isDelete = isDelete;
-    }
 }
