@@ -1,6 +1,7 @@
 package com.shnnny.notBlog;
 
 import com.shnnny.notBlog.intercept.CrossUrlInterceptor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
@@ -16,9 +17,17 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 @Configuration
 public class WebConfigurer extends WebMvcConfigurationSupport {
 
+    /**
+     * 解决在自定义拦截器中注入service为null的问题
+     * @return
+     */
+    @Bean
+    public CrossUrlInterceptor getCrossUrlInterceptor(){
+        return  new CrossUrlInterceptor();
+    }
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new CrossUrlInterceptor()).addPathPatterns("/**");
+        registry.addInterceptor(getCrossUrlInterceptor()).addPathPatterns("/**");
         super.addInterceptors(registry);
     }
 

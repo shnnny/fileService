@@ -1,4 +1,4 @@
-package com.shnnny.notBlog.utils;
+package com.shnnny.notBlog.util;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +10,7 @@ import java.util.Enumeration;
 /**
  * ip工具类
  */
-public class IPKit {
+public class IPKitUtils {
     /**
      * 获取请求的真实ip
      * @param request 请求

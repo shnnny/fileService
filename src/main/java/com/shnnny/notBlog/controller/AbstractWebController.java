@@ -1,7 +1,7 @@
 package com.shnnny.notBlog.controller;
 
 import com.shnnny.notBlog.model.po.User;
-import com.shnnny.notBlog.utils.JsonUtils;
+import com.shnnny.notBlog.util.JsonUtils;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;

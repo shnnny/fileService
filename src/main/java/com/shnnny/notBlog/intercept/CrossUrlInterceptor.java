@@ -1,8 +1,20 @@
 package com.shnnny.notBlog.intercept;
 
+import com.shnnny.notBlog.cache.MapCache;
+import com.shnnny.notBlog.model.Types;
+import com.shnnny.notBlog.model.po.User;
+import com.shnnny.notBlog.service.UserService;
+import com.shnnny.notBlog.util.BlogUtils;
+import com.shnnny.notBlog.util.IPKitUtils;
+import com.shnnny.notBlog.util.UUIDUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,7 +24,48 @@ import javax.servlet.http.HttpServletResponse;
  * 统一拦截response进行设置
  */
 public class CrossUrlInterceptor implements HandlerInterceptor {
+    private static final Logger LOGGE = LoggerFactory.getLogger(CrossUrlInterceptor.class);
+    private static final String USER_AGENT = "user-agent";
+
+    private MapCache cache = MapCache.single();
+
+    @Resource
+    private UserService userService;
+
+
+
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        BeanFactory factory = WebApplicationContextUtils.getRequiredWebApplicationContext(request.getServletContext());
+        UserService userService1 = (UserService)factory.getBean("userServiceImpl");
+        String requestURI = request.getRequestURI();
+
+        LOGGE.info("UserAgent: {}", request.getHeader(USER_AGENT));
+        LOGGE.info("用户访问地址: {}, 来路地址: {}", requestURI, IPKitUtils.getIpAddrByRequest(request));
+
+        //请求拦截处理
+        User user = BlogUtils.getLoginUser(request);
+
+        if (null == user) {
+            Integer uid = BlogUtils.getCookieUid(request);
+            if (null != uid) {
+                //这里还是有安全隐患,cookie是可以伪造的
+                user = userService.queryUserById(uid);
+                request.getSession().setAttribute(BlogUtils.LOGIN_SESSION_KEY, user);
+            }
+        }
+        String method = request.getMethod();
+        //设置get请求的token
+        if (request.getMethod().equals("GET")) {
+            String csrf_token = UUIDUtils.UU64();
+            // 默认存储30分钟
+            cache.hset(Types.CSRF_TOKEN.getType(), csrf_token, requestURI, 30 * 60);
+            request.setAttribute("_csrf_token", csrf_token);
+        }
+
+
+
+
+
         //指定允许其他的域名访问
         response.setHeader("Access-Control-Allow-Origin","*");
         //响应的类型

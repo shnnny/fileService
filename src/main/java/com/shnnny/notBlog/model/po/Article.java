@@ -64,7 +64,7 @@ public class Article implements Serializable {
     /**
      * 博客分类
      */
-    private String blogCagegory;
+    private String blogCategory;
     /**
      * 点击次数
      */
@@ -86,19 +86,11 @@ public class Article implements Serializable {
     private Boolean allowPing;
 
     /**
-     * 允许出现在聚合中
-     */
-    private Boolean allowFeed;
-
-    /**
-     * 内容缩略
+     * 内容
      */
     private String contents;
 
-    /**
-     * 内容对象，这里分开进行存储
-     */
-    private ArticleContent articleContent;
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -192,12 +184,12 @@ public class Article implements Serializable {
     }
 
     @Column(length = 40)
-    public String getBlogCagegory() {
-        return blogCagegory;
+    public String getBlogCategory() {
+        return blogCategory;
     }
 
-    public void setBlogCagegory(String blogCagegory) {
-        this.blogCagegory = blogCagegory;
+    public void setBlogCategory(String blogCategory) {
+        this.blogCategory = blogCategory;
     }
 
     @Column(length = 40)
@@ -236,31 +228,15 @@ public class Article implements Serializable {
         this.allowPing = allowPing;
     }
 
-    @Column(length = 40)
-    public Boolean getAllowFeed() {
-        return allowFeed;
-    }
 
-    public void setAllowFeed(Boolean allowFeed) {
-        this.allowFeed = allowFeed;
-    }
-
-    @Column(length = 40)
+    @Lob
+    @Column(columnDefinition="text")
     public String getContents() {
         return contents;
     }
 
     public void setContents(String contents) {
         this.contents = contents;
-    }
-
-
-    public ArticleContent getArticleContent() {
-        return articleContent;
-    }
-
-    public void setArticleContent(ArticleContent articleContent) {
-        this.articleContent = articleContent;
     }
 
 }

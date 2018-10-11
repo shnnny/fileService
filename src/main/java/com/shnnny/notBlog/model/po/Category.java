@@ -23,9 +23,26 @@ public class Category implements Serializable {
     private String categoryName;
 
     /**
-     * 创建时间
+     * 分类访问路径
      */
-    private Integer created;
+    private String url;
+
+    /**
+     * 分类描述
+     */
+    private String description;
+
+
+    /**
+     * 分类展现的排序
+     */
+    private Integer order;
+
+
+    /**
+     * 分类下聚合的标签计数
+     */
+    private Integer tagCnt;
 
 
     @Id
@@ -47,12 +64,39 @@ public class Category implements Serializable {
         this.categoryName = categoryName;
     }
 
-    @Column(length = 20)
-    public Integer getCreated() {
-        return created;
+    @Column(length = 200)
+    public String getUrl() {
+        return url;
     }
 
-    public void setCreated(Integer created) {
-        this.created = created;
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    @Column(length = 1000)
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Column(length = 20)
+    public Integer getOrder() {
+        return order;
+    }
+
+    public void setOrder(Integer order) {
+        order = order;
+    }
+
+    @Column(length = 20)
+    public Integer getTagCnt() {
+        return tagCnt;
+    }
+
+    public void setTagCnt(Integer tagCnt) {
+        tagCnt = tagCnt;
     }
 }

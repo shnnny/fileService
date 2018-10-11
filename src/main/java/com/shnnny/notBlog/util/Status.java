@@ -1,4 +1,4 @@
-package com.shnnny.notBlog.utils;
+package com.shnnny.notBlog.util;
 
 /**
  * author zhangzhh

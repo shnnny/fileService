@@ -11,7 +11,7 @@ public class User implements Serializable {
     /**
      * user表主键
      */
-    private Integer uid;
+    private Integer userId;
 
     /**
      * 用户名称
@@ -38,10 +38,6 @@ public class User implements Serializable {
      */
     private String homeUrl;
 
-    /**
-     * 用户显示的名称
-     */
-    private String screenName;
 
     /**
      * 用户注册时的GMT unix时间戳
@@ -53,15 +49,11 @@ public class User implements Serializable {
      */
     private Integer activated;
 
-    /**
-     * 上次登录最后活跃时间
-     */
-    private Integer logged;
 
     /**
-     * 用户类型　游客　－　非游客
+     * 用户头像地址
      */
-    private String userType;
+    private String Avatar;
 
     /**
      * 用户所属的角色
@@ -71,12 +63,12 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer getUid() {
-        return uid;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUid(Integer uid) {
-        this.uid = uid;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     @Column(length = 40)
@@ -124,14 +116,6 @@ public class User implements Serializable {
         this.homeUrl = homeUrl;
     }
 
-    @Column(length = 40)
-    public String getScreenName() {
-        return screenName;
-    }
-
-    public void setScreenName(String screenName) {
-        this.screenName = screenName;
-    }
 
     @Column(length = 40)
     public Integer getCreated() {
@@ -151,22 +135,13 @@ public class User implements Serializable {
         this.activated = activated;
     }
 
-    @Column(length = 20)
-    public Integer getLogged() {
-        return logged;
+    @Column(length = 200)
+    public String getAvatar() {
+        return Avatar;
     }
 
-    public void setLogged(Integer logged) {
-        this.logged = logged;
-    }
-
-    @Column(length = 20)
-    public String getUserType() {
-        return userType;
-    }
-
-    public void setUserType(String userType) {
-        this.userType = userType;
+    public void setAvatar(String avatar) {
+        Avatar = avatar;
     }
 
     @Column(length = 20)

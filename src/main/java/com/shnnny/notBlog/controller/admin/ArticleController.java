@@ -4,10 +4,8 @@ import com.shnnny.notBlog.controller.AbstractWebController;
 import com.shnnny.notBlog.exception.TipException;
 import com.shnnny.notBlog.model.dto.Result;
 import com.shnnny.notBlog.model.po.Article;
-import com.shnnny.notBlog.model.po.ArticleContent;
-import com.shnnny.notBlog.service.ArticleContentService;
 import com.shnnny.notBlog.service.ArticleService;
-import com.shnnny.notBlog.utils.ResultUtils;
+import com.shnnny.notBlog.util.ResultUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -29,9 +27,6 @@ public class ArticleController extends AbstractWebController {
     @Autowired
     private ArticleService articleService;
 
-    @Autowired
-    private ArticleContentService articleContentService;
-
 
     /**
      * 文章发表
@@ -40,10 +35,9 @@ public class ArticleController extends AbstractWebController {
      */
     @PostMapping(value = "/publish")
     @Transactional(rollbackFor = TipException.class)
-    public Result publishArticle(HttpServletRequest request, Article article , ArticleContent articleContent) {
+    public Result publishArticle(HttpServletRequest request, Article article) {
 
         HttpSession session = getSession();
-        article.setArticleContent(articleContent);
 
 
         articleService.publish(article);

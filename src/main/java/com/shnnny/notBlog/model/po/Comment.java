@@ -31,15 +31,6 @@ public class Comment implements Serializable {
      */
     private String author;
 
-    /**
-     * 评论所属用户id
-     */
-    private Integer authorId;
-
-    /**
-     * 评论所属内容作者id
-     */
-    private String ownerId;
 
     /**
      * 评论者邮件
@@ -74,17 +65,14 @@ public class Comment implements Serializable {
     /**
      * 父级评论
      */
-    private Integer parent;
+    private Integer parentId;
 
     /**
      * 评论内容
      */
     private String content;
 
-    /**
-     * 评论所属城市地址
-     */
-    private String address;
+
     /**
      * 引用
      */
@@ -128,23 +116,7 @@ public class Comment implements Serializable {
         this.author = author;
     }
 
-    @Column(length = 20)
-    public Integer getAuthorId() {
-        return authorId;
-    }
 
-    public void setAuthorId(Integer authorId) {
-        this.authorId = authorId;
-    }
-
-    @Column(length = 20)
-    public String getOwnerId() {
-        return ownerId;
-    }
-
-    public void setOwnerId(String ownerId) {
-        this.ownerId = ownerId;
-    }
 
     @Column(length = 40)
     public String getMail() {
@@ -201,12 +173,12 @@ public class Comment implements Serializable {
     }
 
     @Column(length = 20)
-    public Integer getParent() {
-        return parent;
+    public Integer getParentId() {
+        return parentId;
     }
 
-    public void setParent(Integer parent) {
-        this.parent = parent;
+    public void setParentId(Integer parentId) {
+        this.parentId = parentId;
     }
 
     @Column
@@ -218,14 +190,7 @@ public class Comment implements Serializable {
         this.content = content;
     }
 
-    @Column(length = 200)
-    public String getAddress() {
-        return address;
-    }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
     @Column(length = 40)
     public String getYinyong() {

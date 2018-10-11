@@ -1,7 +1,6 @@
 package com.shnnny.notBlog.service.impl;
 
 import com.shnnny.notBlog.model.po.Article;
-import com.shnnny.notBlog.repository.ArticleContentRepository;
 import com.shnnny.notBlog.repository.ArticleRepository;
 import com.shnnny.notBlog.service.ArticleService;
 import org.slf4j.Logger;
@@ -13,8 +12,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 /**
  * @author zhangzhh
  * @date 2018/10/8 16:13
@@ -25,13 +22,11 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Autowired
     private ArticleRepository articleRepository;
-    @Autowired
-    private ArticleContentRepository articleContentRepository;
 
 
     public void publish(Article article) {
         articleRepository.saveAndFlush(article);
-        articleContentRepository.saveAndFlush(article.getArticleContent());
+
 
     }
 

@@ -3,7 +3,7 @@ package com.shnnny.notBlog.controller.admin;
 import com.shnnny.notBlog.model.dto.Result;
 import com.shnnny.notBlog.model.po.User;
 import com.shnnny.notBlog.controller.BaseController;
-import com.shnnny.notBlog.utils.ResultUtils;
+import com.shnnny.notBlog.util.ResultUtils;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -24,8 +24,6 @@ public class UserController extends BaseController {
     public Result getUserById(@PathVariable("id")Integer id){
 
         User user = new User();
-        user.setScreenName("123");
-        user.setUid(id);
 
 
         return ResultUtils.success(user);

@@ -1,4 +1,4 @@
-package com.shnnny.notBlog.utils;
+package com.shnnny.notBlog.util;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
