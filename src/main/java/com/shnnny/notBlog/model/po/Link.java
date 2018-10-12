@@ -36,7 +36,7 @@ public class Link implements Serializable {
     /**
      * 连接展现的排序
      */
-    private Integer order;
+    private Integer sort;
 
 
     @Id
@@ -77,11 +77,12 @@ public class Link implements Serializable {
     }
 
     @Column(length =20)
-    public Integer getOrder() {
-        return order;
+
+    public Integer getSort() {
+        return sort;
     }
 
-    public void setOrder(Integer order) {
-        this.order = order;
+    public void setSort(Integer sort) {
+        this.sort = sort;
     }
 }

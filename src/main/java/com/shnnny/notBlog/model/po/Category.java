@@ -36,7 +36,7 @@ public class Category implements Serializable {
     /**
      * 分类展现的排序
      */
-    private Integer order;
+    private Integer sort;
 
 
     /**
@@ -83,12 +83,12 @@ public class Category implements Serializable {
     }
 
     @Column(length = 20)
-    public Integer getOrder() {
-        return order;
+    public Integer getSort() {
+        return sort;
     }
 
-    public void setOrder(Integer order) {
-        order = order;
+    public void setSort(Integer sort) {
+        this.sort = sort;
     }
 
     @Column(length = 20)
@@ -97,6 +97,6 @@ public class Category implements Serializable {
     }
 
     public void setTagCnt(Integer tagCnt) {
-        tagCnt = tagCnt;
+        this.tagCnt = tagCnt;
     }
 }

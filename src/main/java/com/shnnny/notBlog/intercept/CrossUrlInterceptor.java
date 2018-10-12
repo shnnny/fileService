@@ -35,8 +35,8 @@ public class CrossUrlInterceptor implements HandlerInterceptor {
 
 
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        BeanFactory factory = WebApplicationContextUtils.getRequiredWebApplicationContext(request.getServletContext());
-        UserService userService1 = (UserService)factory.getBean("userServiceImpl");
+       /* BeanFactory factory = WebApplicationContextUtils.getRequiredWebApplicationContext(request.getServletContext());
+        UserService userService1 = (UserService)factory.getBean("userServiceImpl");*/
         String requestURI = request.getRequestURI();
 
         LOGGE.info("UserAgent: {}", request.getHeader(USER_AGENT));
