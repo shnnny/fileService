@@ -1,8 +1,8 @@
 package com.shnnny.notBlog.controller.admin;
 
+import com.shnnny.notBlog.controller.AbstractWebController;
 import com.shnnny.notBlog.model.dto.Result;
 import com.shnnny.notBlog.model.po.User;
-import com.shnnny.notBlog.controller.BaseController;
 import com.shnnny.notBlog.util.ResultUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/user")
-public class UserController extends BaseController {
+public class UserController extends AbstractWebController {
 
     @RequestMapping(value = "/hello",method = RequestMethod.GET)
     public Result hello() {
