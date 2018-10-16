@@ -4,7 +4,9 @@ version '1.0-SNAPSHOT'
 apply plugin: 'java'
 apply plugin: 'war'
 
-sourceCompatibility = 1.5
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+[compileJava,compileTestJava,javadoc]*.options*.encoding = 'UTF-8'
 
 repositories {
     maven { url "http://repo1.maven.org/maven2/" }
@@ -28,8 +30,10 @@ dependencies {
     compile group: 'com.vdurmont', name: 'emoji-java', version: '4.0.0'
     compile group: 'com.alibaba', name: 'druid', version: '1.1.11'
     compile group: 'com.atlassian.commonmark', name: 'commonmark', version: '0.11.0'
+    
+}
 
-
-
-
+task explodedWar(type: Sync) {
+    into "${buildDir}/exploded/blog"
+    with war
 }
