@@ -16,17 +16,17 @@ public class User implements Serializable {
     /**
      * 用户名称
      */
-    private String username;
+    private String userName;
 
     /**
      * 昵称-艺名
      */
-    private String nickname;
+    private String nickName;
 
     /**
      * 用户密码
      */
-    private String password;
+    private String passWord;
 
     /**
      * 用户的邮箱
@@ -72,30 +72,31 @@ public class User implements Serializable {
     }
 
     @Column(length = 40)
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+
+    @Column(length = 40)
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 
     @Column(length = 40)
-    public String getNickname() {
-        return nickname;
+    public String getPassWord() {
+        return passWord;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-
-    @Column(length = 40)
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
     }
 
     @Column(length = 40)

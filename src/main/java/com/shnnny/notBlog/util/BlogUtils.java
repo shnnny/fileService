@@ -1,5 +1,6 @@
 package com.shnnny.notBlog.util;
 
+import com.shnnny.notBlog.comm.CommGlobal;
 import com.shnnny.notBlog.model.po.User;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -21,10 +22,7 @@ public class BlogUtils {
 
     public static String LOGIN_SESSION_KEY = "login_user";
     public static final String USER_IN_COOKIE = "S_L_ID";
-    /**
-     * aes加密加盐
-     */
-    public static String AES_SALT = "0123456789abcdef";
+
 
     /**
      * 返回当前登录用户
@@ -51,7 +49,7 @@ public class BlogUtils {
             Cookie cookie = cookieRaw(USER_IN_COOKIE, request);
             if (cookie != null && cookie.getValue() != null) {
                 try {
-                    String uid = Tools.deAes(cookie.getValue(), AES_SALT);
+                    String uid = Tools.deAes(cookie.getValue(), CommGlobal.AES_SALT);
                     return StringUtils.isNotBlank(uid) && Tools.isNumber(uid) ? Integer.valueOf(uid) : null;
                 } catch (Exception e) {
                 }
@@ -87,7 +85,7 @@ public class BlogUtils {
      */
     public static void setCookie(HttpServletResponse response, Integer uid) {
         try {
-            String val = Tools.enAes(uid.toString(), AES_SALT);
+            String val = Tools.enAes(uid.toString(), CommGlobal.AES_SALT);
             boolean isSSL = false;
             Cookie cookie = new Cookie(USER_IN_COOKIE, val);
             cookie.setPath("/");

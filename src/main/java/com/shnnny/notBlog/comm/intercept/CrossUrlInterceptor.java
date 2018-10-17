@@ -1,4 +1,4 @@
-package com.shnnny.notBlog.intercept;
+package com.shnnny.notBlog.comm.intercept;
 
 import com.shnnny.notBlog.cache.MapCache;
 import com.shnnny.notBlog.model.Types;
@@ -9,8 +9,6 @@ import com.shnnny.notBlog.util.IPKitUtils;
 import com.shnnny.notBlog.util.UUIDUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 

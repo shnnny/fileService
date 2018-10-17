@@ -1,7 +1,7 @@
 package com.shnnny.notBlog.controller.admin;
 
 import com.shnnny.notBlog.controller.AbstractWebController;
-import com.shnnny.notBlog.exception.TipException;
+import com.shnnny.notBlog.comm.exception.TipException;
 import com.shnnny.notBlog.model.dto.Result;
 import com.shnnny.notBlog.model.po.Article;
 import com.shnnny.notBlog.service.ArticleService;

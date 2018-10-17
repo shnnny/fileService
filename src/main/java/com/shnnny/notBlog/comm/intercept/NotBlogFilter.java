@@ -1,4 +1,4 @@
-package com.shnnny.notBlog.intercept;
+package com.shnnny.notBlog.comm.intercept;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;

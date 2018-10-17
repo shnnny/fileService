@@ -4,15 +4,11 @@ package com.shnnny.notBlog.model.dto;
  * Created by zzh on 2018/9/21.
  */
 public class Result {
-    private Integer code;
+    private String code;
     private String msg;
     private Object data;
 
-    public Integer getCode() {
-        return code;
-    }
-
-    public void setCode(Integer code) {
+    public void setCode(String code) {
         this.code = code;
     }
 

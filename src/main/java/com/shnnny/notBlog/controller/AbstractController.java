@@ -20,7 +20,7 @@ public abstract class AbstractController {
     /**
      * 日志对象
      */
-    protected Logger logger = LoggerFactory.getLogger(getClass());
+    protected Logger LOGGER = LoggerFactory.getLogger(getClass());
 
     /**
      * 存放当前线程的HttpServletRequest对象

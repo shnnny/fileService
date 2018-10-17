@@ -5,4 +5,5 @@ import com.shnnny.notBlog.model.po.User;
 public interface UserService {
 
    User queryUserById(Integer userId);
+   User findByUserNameOrEmail(String userName,String email);
 }

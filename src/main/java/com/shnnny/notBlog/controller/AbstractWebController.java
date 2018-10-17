@@ -1,7 +1,10 @@
 package com.shnnny.notBlog.controller;
 
+import com.shnnny.notBlog.comm.CommGlobal;
 import com.shnnny.notBlog.model.po.User;
 import com.shnnny.notBlog.util.JsonUtils;
+import com.shnnny.notBlog.util.MD5Utils;
+import com.shnnny.notBlog.util.Tools;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -24,6 +27,25 @@ public abstract class AbstractWebController extends AbstractController{
     protected static final String NICKNAME_ATTRIBUTE_NAME = "nickname";
 
 
+    protected String getPwd(String password){
+        try {
+            String pwd = MD5Utils.encrypt(password+ CommGlobal.PASSWORD_KEY);
+            return pwd;
+        } catch (Exception e) {
+            LOGGER.error("密码加密异常：",e);
+        }
+        return null;
+    }
+    protected String cookieSign(String value){
+        try{
+            value = value + CommGlobal.PASSWORD_KEY;
+            String sign = Tools.enAes(value, CommGlobal.AES_SALT);
+            return sign;
+        }catch (Exception e){
+            LOGGER.error("cookie签名异常：",e);
+        }
+        return null;
+    }
 
 
     /**
@@ -36,8 +58,8 @@ public abstract class AbstractWebController extends AbstractController{
     }
 
     protected void afterLoginSuccess(User loginWebUser) {
-        setSessionAttribute(USERNAME_ATTRIBUTE_NAME, loginWebUser.getUsername());
-        setSessionAttribute(NICKNAME_ATTRIBUTE_NAME, loginWebUser.getNickname());
+        setSessionAttribute(USERNAME_ATTRIBUTE_NAME, loginWebUser.getUserName());
+        setSessionAttribute(NICKNAME_ATTRIBUTE_NAME, loginWebUser.getNickName());
     }
 
     /**

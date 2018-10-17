@@ -4,4 +4,6 @@ import com.shnnny.notBlog.model.po.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User , Integer> {
+
+   User findByUserNameOrEmail(String userName,String email);
 }

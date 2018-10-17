@@ -1,4 +1,4 @@
-package com.shnnny.notBlog.exception;
+package com.shnnny.notBlog.comm.exception;
 
 import com.shnnny.notBlog.model.dto.Result;
 import com.shnnny.notBlog.util.ResultUtils;
@@ -23,25 +23,25 @@ public class GlobalExceptionHandle {
     public Result exceptionHandle(HttpServletRequest request, Exception ex){
         ex.printStackTrace();
         if (ex instanceof MissingServletRequestParameterException) {
-            return ResultUtils.error(400, ex.toString());
+            return ResultUtils.error("400", ex.toString());
         }
         if (ex instanceof TipException) {
 
             LOGGER.error("=======" + ex.getMessage() + "=======");
-            return ResultUtils.error(400, "运行异常！");
+            return ResultUtils.error("400", "运行异常！");
 
         }
 
         if (ex instanceof DuplicateKeyException) {
             LOGGER.error("=======违反主键约束：主键重复插入=======");
-            return ResultUtils.error(400, "主键重复插入！");
+            return ResultUtils.error("400", "主键重复插入！");
         }
 
         /**
          * 未知异常
          */
         LOGGER.error(ex.toString());
-        return ResultUtils.error(500, ex.getMessage());
+        return ResultUtils.error("500", ex.getMessage());
 
     }
 }

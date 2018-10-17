@@ -1,6 +1,6 @@
 package com.shnnny.notBlog;
 
-import com.shnnny.notBlog.intercept.CrossUrlInterceptor;
+import com.shnnny.notBlog.comm.intercept.CrossUrlInterceptor;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

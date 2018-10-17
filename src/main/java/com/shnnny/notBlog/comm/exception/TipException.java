@@ -1,4 +1,4 @@
-package com.shnnny.notBlog.exception;
+package com.shnnny.notBlog.comm.exception;
 
 /**
  * Created by zzh on 2018/9/21.
