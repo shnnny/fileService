@@ -2,10 +2,10 @@ package com.shnnny.notBlog.controller.admin;
 
 import com.shnnny.notBlog.controller.AbstractWebController;
 import com.shnnny.notBlog.comm.exception.TipException;
-import com.shnnny.notBlog.model.dto.Result;
+import com.shnnny.notBlog.model.result.Result;
 import com.shnnny.notBlog.model.po.Article;
 import com.shnnny.notBlog.service.ArticleService;
-import com.shnnny.notBlog.util.ResultUtils;
+import com.shnnny.notBlog.model.result.ResultUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;

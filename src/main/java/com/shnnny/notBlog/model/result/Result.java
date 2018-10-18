@@ -1,4 +1,4 @@
-package com.shnnny.notBlog.model.dto;
+package com.shnnny.notBlog.model.result;
 
 /**
  * Created by zzh on 2018/9/21.

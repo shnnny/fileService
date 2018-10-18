@@ -1,7 +1,7 @@
 package com.shnnny.notBlog.comm.exception;
 
-import com.shnnny.notBlog.model.dto.Result;
-import com.shnnny.notBlog.util.ResultUtils;
+import com.shnnny.notBlog.model.result.Result;
+import com.shnnny.notBlog.model.result.ResultUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DuplicateKeyException;

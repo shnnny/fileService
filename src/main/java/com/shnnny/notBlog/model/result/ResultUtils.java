@@ -1,7 +1,4 @@
-package com.shnnny.notBlog.util;
-
-import com.shnnny.notBlog.model.dto.Result;
-import com.shnnny.notBlog.model.result.ExceptionMessage;
+package com.shnnny.notBlog.model.result;
 
 /**
  * Created by zzh on 2018/9/21.

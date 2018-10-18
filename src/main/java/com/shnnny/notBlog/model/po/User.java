@@ -42,12 +42,12 @@ public class User implements Serializable {
     /**
      * 用户注册时的GMT unix时间戳
      */
-    private Integer created;
+    private Long created;
 
     /**
      * 最后活动时间
      */
-    private Integer activated;
+    private Long activated;
 
 
     /**
@@ -60,6 +60,15 @@ public class User implements Serializable {
      */
     private String roleId;
 
+    /**
+     * 保留时间
+     */
+    private String outDate;
+
+    /**
+     * 校验的密钥
+     */
+    private String validataCode;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -117,22 +126,21 @@ public class User implements Serializable {
         this.homeUrl = homeUrl;
     }
 
-
     @Column(length = 40)
-    public Integer getCreated() {
+    public Long getCreated() {
         return created;
     }
 
-    public void setCreated(Integer created) {
+    public void setCreated(Long created) {
         this.created = created;
     }
 
-    @Column(length = 20)
-    public Integer getActivated() {
+    @Column(length = 40)
+    public Long getActivated() {
         return activated;
     }
 
-    public void setActivated(Integer activated) {
+    public void setActivated(Long activated) {
         this.activated = activated;
     }
 
@@ -152,5 +160,23 @@ public class User implements Serializable {
 
     public void setRoleId(String roleId) {
         this.roleId = roleId;
+    }
+
+    @Column(length = 20)
+    public String getOutDate() {
+        return outDate;
+    }
+
+    public void setOutDate(String outDate) {
+        this.outDate = outDate;
+    }
+
+    @Column(length = 20)
+    public String getValidataCode() {
+        return validataCode;
+    }
+
+    public void setValidataCode(String validataCode) {
+        this.validataCode = validataCode;
     }
 }
