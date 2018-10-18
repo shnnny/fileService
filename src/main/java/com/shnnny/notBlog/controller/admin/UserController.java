@@ -192,4 +192,62 @@ public class UserController extends AbstractWebController {
         }
         return ResultUtils.success();
     }
+    /**
+     * 修改密码
+     * @param oldPassword
+     * @param newPassword
+     * @return
+     */
+    @RequestMapping(value = "/updatePassword", method = RequestMethod.POST)
+    @LoggerManage(description="修改密码")
+    public Result updatePassword(String oldPassword, String newPassword) {
+        try {
+            User user = getUser();
+            String password = user.getPassWord();
+            String newpwd = getPwd(newPassword);
+            if(password.equals(getPwd(oldPassword))){
+                userService.setNewPassword(newpwd, user.getEmail());
+                user.setPassWord(newpwd);
+                getSession().setAttribute(CommGlobal.LOGIN_SESSION_KEY, user);
+            }else{
+                return ResultUtils.error(ExceptionMessage.PassWordError);
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+            LOGGER.error("updatePassword failed, ", e);
+            return ResultUtils.error(ExceptionMessage.FAILED);
+        }
+        return ResultUtils.success();
+    }
+
+    /**
+     * 修改昵称
+     * @param userName
+     * @return
+     */
+    @RequestMapping(value = "/updateUserName", method = RequestMethod.POST)
+    @LoggerManage(description="修改昵称")
+    public Result updateUserName(String userName) {
+        try {
+            User loginUser = getUser();
+            if(userName.equals(loginUser.getUserName())){
+                return ResultUtils.error(ExceptionMessage.UserNameSame);
+            }
+            User user = userService.findByUserName(userName);
+            if(null != user && user.getUserName().equals(userName)){
+                return ResultUtils.error(ExceptionMessage.UserNameUsed);
+            }
+            if(userName.length()>12){
+                return ResultUtils.error(ExceptionMessage.UserNameLengthLimit);
+            }
+            userService.setUserName(userName, loginUser.getEmail());
+            loginUser.setUserName(userName);
+            getSession().setAttribute(CommGlobal.LOGIN_SESSION_KEY, loginUser);
+            return ResultUtils.success(userName);
+        } catch (Exception e) {
+            // TODO: handle exception
+            LOGGER.error("updateUserName failed, ", e);
+            return ResultUtils.error(ExceptionMessage.FAILED);
+        }
+    }
 }

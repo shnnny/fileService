@@ -13,4 +13,6 @@ public interface UserService {
    int setOutDateAndValidataCode(String outDate,String validataCode,String email);
 
    int setNewPassword(String passWord,String email);
+
+   int setUserName(String userName, String email);
 }

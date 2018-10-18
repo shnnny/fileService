@@ -56,4 +56,9 @@ public class UserServiceImpl implements UserService {
     public int setNewPassword(String passWord, String email) {
         return userRepository.setNewPassword(passWord,email);
     }
+
+    @Override
+    public int setUserName(String userName, String email) {
+        return userRepository.setUserName(userName,email);
+    }
 }

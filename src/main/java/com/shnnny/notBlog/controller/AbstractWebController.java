@@ -46,6 +46,9 @@ public abstract class AbstractWebController extends AbstractController{
         }
         return null;
     }
+    protected User getUser() {
+        return (User) getSession().getAttribute(CommGlobal.LOGIN_SESSION_KEY);
+    }
 
 
     /**
