@@ -27,6 +27,11 @@ public abstract class AbstractWebController extends AbstractController{
     protected static final String NICKNAME_ATTRIBUTE_NAME = "nickname";
 
 
+    /**
+     * 进行密码加密，抽取的公共方法
+     * @param password
+     * @return
+     */
     protected String getPwd(String password){
         try {
             String pwd = MD5Utils.encrypt(password+ CommGlobal.PASSWORD_KEY);
@@ -36,6 +41,12 @@ public abstract class AbstractWebController extends AbstractController{
         }
         return null;
     }
+
+    /**
+     * 通过aes加密生成cookie的签名
+     * @param value
+     * @return
+     */
     protected String cookieSign(String value){
         try{
             value = value + CommGlobal.PASSWORD_KEY;
@@ -46,6 +57,11 @@ public abstract class AbstractWebController extends AbstractController{
         }
         return null;
     }
+
+    /**
+     * 获取当前session中登录的人
+     * @return
+     */
     protected User getUser() {
         return (User) getSession().getAttribute(CommGlobal.LOGIN_SESSION_KEY);
     }

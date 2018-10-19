@@ -39,7 +39,7 @@ public class Log implements Serializable {
     /**
      * 日志创建时间
      */
-    private Integer created;
+    private Long created;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -87,12 +87,12 @@ public class Log implements Serializable {
         this.ip = ip;
     }
 
-    @Column(length = 40)
-    public Integer getCreated() {
+    @Column(length = 20)
+    public Long getCreated() {
         return created;
     }
 
-    public void setCreated(Integer created) {
+    public void setCreated(Long created) {
         this.created = created;
     }
 }

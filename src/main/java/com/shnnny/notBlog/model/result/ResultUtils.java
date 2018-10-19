@@ -18,6 +18,10 @@ public class ResultUtils {
     public static Result success(){
         return success(null);
     }
+    public static Result error(String msg){
+
+      return error("1",msg);
+    }
 
     public static Result error(String code,String msg){
 

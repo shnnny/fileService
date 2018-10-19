@@ -61,4 +61,10 @@ public class UserServiceImpl implements UserService {
     public int setUserName(String userName, String email) {
         return userRepository.setUserName(userName,email);
     }
+
+    @Override
+    public int update(User user) {
+        userRepository.saveAndFlush(user);
+        return 0;
+    }
 }

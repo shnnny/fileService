@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
 public class BlogUtils {
     private static final Logger LOGGER = LoggerFactory.getLogger(BlogUtils.class);
 
-    public static String LOGIN_SESSION_KEY = "login_user";
+
     public static final String USER_IN_COOKIE = "S_L_ID";
 
 
@@ -34,7 +34,7 @@ public class BlogUtils {
         if (null == session) {
             return null;
         }
-        return (User) session.getAttribute(LOGIN_SESSION_KEY);
+        return (User) session.getAttribute(CommGlobal.LOGIN_SESSION_KEY);
 
     }
 
@@ -49,7 +49,8 @@ public class BlogUtils {
             Cookie cookie = cookieRaw(USER_IN_COOKIE, request);
             if (cookie != null && cookie.getValue() != null) {
                 try {
-                    String uid = Tools.deAes(cookie.getValue(), CommGlobal.AES_SALT);
+                    String sign = Tools.deAes(cookie.getValue(), CommGlobal.AES_SALT);
+                    String uid = sign.replace(CommGlobal.PASSWORD_KEY,"");
                     return StringUtils.isNotBlank(uid) && Tools.isNumber(uid) ? Integer.valueOf(uid) : null;
                 } catch (Exception e) {
                 }
@@ -79,15 +80,15 @@ public class BlogUtils {
     }
     /**
      * 设置记住密码cookie
-     *
      * @param response
      * @param uid
      */
     public static void setCookie(HttpServletResponse response, Integer uid) {
         try {
-            String val = Tools.enAes(uid.toString(), CommGlobal.AES_SALT);
+            String value = uid.toString() + CommGlobal.PASSWORD_KEY;
+            String val = Tools.enAes(value, CommGlobal.AES_SALT);
             boolean isSSL = false;
-            Cookie cookie = new Cookie(USER_IN_COOKIE, val);
+            Cookie cookie = new Cookie(CommGlobal.LOGIN_SESSION_KEY, val);
             cookie.setPath("/");
             cookie.setMaxAge(60*30);
             cookie.setSecure(isSSL);

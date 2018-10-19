@@ -12,7 +12,7 @@ public class CommGlobal {
     /**
      * 登录的sessionkey
      */
-    public static String LOGIN_SESSION_KEY = "Favorites_user";
+    public static String LOGIN_SESSION_KEY = "login_user";
 
     /**
      * 密码key

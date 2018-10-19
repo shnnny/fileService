@@ -12,14 +12,21 @@ public interface ArticleService {
      */
     void publish(Article article);
 
+
     /**
      * 根据文章id删除
      * @param articleId
      */
     void deleteByArticleId(Integer articleId);
 
+
     /**
-     * 根据主键更新
+     * 编辑文章
+     * @param article
+     */
+    void updateArticle(Article article);
+    /**
+     * 根据主键更新 例如更新状态，分类，等等
      * @param article
      */
     void updateArticleByArticleId(Article article);

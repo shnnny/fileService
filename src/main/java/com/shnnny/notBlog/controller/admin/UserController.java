@@ -8,6 +8,7 @@ import com.shnnny.notBlog.model.result.ExceptionMessage;
 import com.shnnny.notBlog.model.result.Result;
 import com.shnnny.notBlog.model.result.ResultUtils;
 import com.shnnny.notBlog.service.UserService;
+import com.shnnny.notBlog.util.BlogUtils;
 import com.shnnny.notBlog.util.MD5Utils;
 import com.shnnny.notBlog.util.MessageUtils;
 import com.shnnny.notBlog.util.UUIDUtils;
@@ -81,6 +82,9 @@ public class UserController extends AbstractWebController {
             cookie.setMaxAge(CommGlobal.COOKIE_TIMEOUT);
             cookie.setPath("/");
             response.addCookie(cookie);
+
+            //如果设置记住密码生成的cookie
+            BlogUtils.setCookie(response,loginUser.getUserId());
 
             getSession().setAttribute(CommGlobal.LOGIN_SESSION_KEY, loginUser);
             return ResultUtils.success();
@@ -206,8 +210,10 @@ public class UserController extends AbstractWebController {
             String password = user.getPassWord();
             String newpwd = getPwd(newPassword);
             if(password.equals(getPwd(oldPassword))){
+               //这两个更新方法的道理一样，这里需要进行验证哪一种的方式有效而且效率比较高
                 userService.setNewPassword(newpwd, user.getEmail());
                 user.setPassWord(newpwd);
+                userService.update(user);
                 getSession().setAttribute(CommGlobal.LOGIN_SESSION_KEY, user);
             }else{
                 return ResultUtils.error(ExceptionMessage.PassWordError);

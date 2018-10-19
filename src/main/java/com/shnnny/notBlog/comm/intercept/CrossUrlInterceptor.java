@@ -1,6 +1,7 @@
 package com.shnnny.notBlog.comm.intercept;
 
 import com.shnnny.notBlog.cache.MapCache;
+import com.shnnny.notBlog.comm.CommGlobal;
 import com.shnnny.notBlog.model.Types;
 import com.shnnny.notBlog.model.po.User;
 import com.shnnny.notBlog.service.UserService;
@@ -32,6 +33,7 @@ public class CrossUrlInterceptor implements HandlerInterceptor {
 
 
 
+    @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
        /* BeanFactory factory = WebApplicationContextUtils.getRequiredWebApplicationContext(request.getServletContext());
         UserService userService1 = (UserService)factory.getBean("userServiceImpl");*/
@@ -48,12 +50,12 @@ public class CrossUrlInterceptor implements HandlerInterceptor {
             if (null != uid) {
                 //这里还是有安全隐患,cookie是可以伪造的
                 user = userService.queryUserById(uid);
-                request.getSession().setAttribute(BlogUtils.LOGIN_SESSION_KEY, user);
+                request.getSession().setAttribute(CommGlobal.LOGIN_SESSION_KEY, user);
             }
         }
         String method = request.getMethod();
         //设置get请求的token
-        if (request.getMethod().equals("GET")) {
+        if ("GET".equals(request.getMethod())) {
             String csrf_token = UUIDUtils.UU64();
             // 默认存储30分钟
             cache.hset(Types.CSRF_TOKEN.getType(), csrf_token, requestURI, 30 * 60);
@@ -75,10 +77,12 @@ public class CrossUrlInterceptor implements HandlerInterceptor {
         return true;
     }
 
+    @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
 
     }
 
+    @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
 
     }

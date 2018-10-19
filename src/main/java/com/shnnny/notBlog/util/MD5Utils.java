@@ -3,6 +3,7 @@ package com.shnnny.notBlog.util;
 import java.security.MessageDigest;
 
 /**
+ * MD5进行密码加密
  * @author zhangzhh
  * @date 2018/10/17 19:58
  */

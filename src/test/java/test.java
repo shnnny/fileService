@@ -14,9 +14,16 @@ import java.io.IOException;
  */
 public class test {
 
-    public static void main(String[] arg){
+    public static void main(String[] arg)throws Exception{
 
-        testQiNiu();
+       /* String encrypt = MD5Utils.encrypt("我不是好人");
+        System.out.println(encrypt);*/
+       /* String ss = "我是个好人";
+        String s = Tools.enAes(ss, CommGlobal.AES_SALT);
+        String s1 = Tools.deAes(s, CommGlobal.AES_SALT);*//*
+        System.out.println(" "+s1);*/
+
+        //testQiNiu();
     }
 
     public static void testQiNiu(){
