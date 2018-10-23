@@ -43,17 +43,17 @@ public class ArticleController extends AbstractWebController {
      */
     @PostMapping(value = "/publish")
     @Transactional(rollbackFor = TipException.class)
-    public Result publishArticle(HttpServletRequest request, Article article) {
+    public Result publishArticle(@RequestBody Article article,HttpServletRequest request) {
 
        //TODO:存储到数据库中
         article.setCreated(System.currentTimeMillis());
-        article.setAuthorId(getUser().getUserId());
+        //article.setAuthorId(getUser().getUserId());
         article.setStatus(Types.PUBLISH.getType());
         if (StringUtils.isBlank(article.getBlogCategory())) {
             article.setBlogCategory(DEFAULT_CATEGORY);
         }
-
         try {
+
             articleService.publish(article);
         } catch (Exception e) {
             String msg = "文章发布失败";
@@ -89,7 +89,7 @@ public class ArticleController extends AbstractWebController {
     @PostMapping(value = "/modify")
     @ResponseBody
     @Transactional(rollbackFor = TipException.class)
-    public Result modifyArticle(Article article,HttpServletRequest request) {
+    public Result modifyArticle(@RequestBody Article article,HttpServletRequest request) {
 
         article.setAuthorId(getUser().getUserId());
         article.setType(Types.PUBLISH.getType());

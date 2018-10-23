@@ -68,7 +68,7 @@ public class UserController extends AbstractWebController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @LoggerManage(description="登陆")
-    public Result login(User user, HttpServletResponse response) {
+    public Result login(@RequestBody User user, HttpServletResponse response) {
         try {
             User loginUser = userService.findByUserNameOrEmail(user.getUserName(), user.getUserName());
 
@@ -98,7 +98,7 @@ public class UserController extends AbstractWebController {
 
     @RequestMapping(value = "/regist", method = RequestMethod.POST)
     @LoggerManage(description="注册")
-    public Result create(User user) {
+    public Result create(@RequestBody User user) {
 
         try{
             User registUser = userService.findByEmail(user.getEmail());

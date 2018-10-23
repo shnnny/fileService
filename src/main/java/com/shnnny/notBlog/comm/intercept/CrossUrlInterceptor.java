@@ -41,6 +41,7 @@ public class CrossUrlInterceptor implements HandlerInterceptor {
 
         LOGGE.info("UserAgent: {}", request.getHeader(USER_AGENT));
         LOGGE.info("用户访问地址: {}, 来路地址: {}", requestURI, IPKitUtils.getIpAddrByRequest(request));
+/*
 
         //请求拦截处理
         User user = BlogUtils.getLoginUser(request);
@@ -61,6 +62,7 @@ public class CrossUrlInterceptor implements HandlerInterceptor {
             cache.hset(Types.CSRF_TOKEN.getType(), csrf_token, requestURI, 30 * 60);
             request.setAttribute("_csrf_token", csrf_token);
         }
+*/
 
 
 
